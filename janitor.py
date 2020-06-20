@@ -1,8 +1,9 @@
-import discord
+from filereader import filereader
 
 class Janitor:
 
-    __bannedWords = ["gay", "sex", "http", "https"] 
+    ##__bannedWords = ["sex"] 
+    __bannedWords = filereader("list.txt").read()
 
     async def delete(self, message):
         await message.delete()

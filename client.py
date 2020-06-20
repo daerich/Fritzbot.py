@@ -1,20 +1,26 @@
 import discord
+from discord.ext import commands
 import os
 from dotenv import load_dotenv
 from janitor import Janitor
 
 
 load_dotenv()
-client = discord.Client()
 janitor = Janitor()
+botclient = commands.Bot(command_prefix= '$')
 
-@client.event
+@botclient.command()
+async def daerich(ctx):
+    await ctx.channel.send("@Forged by DaErich#4668 in 2020@")
+    print("daerich command executed")
+
+@botclient.event
 async def on_ready():
-   print("Successfully logged in")
+    print("Successfully logged in!")
 
-@client.event
+@botclient.event
 async def on_message(message):
     await janitor.sweep(message)
+    await botclient.process_commands(message) # https://stackoverflow.com/questions/50050194/discord-py-bot-functionality-does-not-work-after-adding-new-codes
 
-
-client.run(os.getenv("TOKEN"))
+botclient.run(os.getenv("TOKEN"))
