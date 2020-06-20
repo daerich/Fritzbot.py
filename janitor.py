@@ -2,9 +2,7 @@ import discord
 
 class Janitor:
 
-    def __init__(self):
-        bannedWords = ["gay", "sex", "http", "https"] 
-        self.__bannedWords = bannedWords
+    __bannedWords = ["gay", "sex", "http", "https"] 
 
     async def delete(self, message):
         await message.delete()
