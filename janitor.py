@@ -10,7 +10,7 @@ class Janitor:
     
     async def sweep(self, message): 
         for val in self.__bannedWords:
-            if val in message.content and not self.checkForRole(message, "YourRoleToBeExcluded") is True:
+            if val in message.content and self.checkForRole(message, "YOURROLEHERE") is False:
                 await self.delete(message)
                 print("Message deleted!")
     
@@ -19,7 +19,5 @@ class Janitor:
         for role in message.author.roles:
             if role.name == Role:
                 return True
-                break
-            else:
-                return False
-            
+        
+        return False
