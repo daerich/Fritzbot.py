@@ -2,12 +2,13 @@ import discord
 from discord.ext import commands
 import os
 from dotenv import load_dotenv
-from janitor import Janitor
+from janitor import Janitor, config
 
 
 load_dotenv()
 janitor = Janitor()
-botclient = commands.Bot(command_prefix= '$')
+config=config.config
+botclient = commands.Bot(command_prefix=config.get('General', 'Sign'))
 
 @botclient.command()
 async def daerich(ctx):
