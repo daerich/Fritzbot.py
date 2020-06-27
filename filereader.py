@@ -13,4 +13,22 @@ class filereader:
             self.content = [x.strip() for x in content] 
             return self.content
         except:
-            print("An error ocurred!")
+            print("An error ocurred!Code FR")
+    
+    def readbetween(self, start, end):
+        self.commands=[]
+        try:
+            with open(self.__path, "r") as f:
+                copy=False
+                for line in f:
+                    if(line.startswith(start)):
+                        copy=True
+                        continue
+                    elif(line.startswith(end)):
+                        copy=False
+                        continue
+                    elif(copy):
+                        self.commands.append(line)
+                        continue
+        except:
+            print("An error occurred!Code FRB")
