@@ -26,7 +26,7 @@ class filereader:
                         continue
                     elif(line.startswith(end)):
                         copy=False
-                        continue
+                        break
                     elif(copy):
                         self.commands.append(line)
                         continue

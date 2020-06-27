@@ -28,8 +28,10 @@ async def process_own_commands(message):
         if message.content == config.get('General', 'Sign')+key:
             if "@author" in content[key]:
                 await message.channel.send(message.author.mention + content[key].strip("@author"))
+                break
             else:
                 await message.channel.send(content[key])
+                break
 
     await janitor.sweep(message)
     await botclient.process_commands(message)
@@ -44,7 +46,7 @@ async def daerich(ctx):
 @botclient.event
 async def on_ready():
     addcomands()
-    print(content)
+    print(content) #debug statement
     print("Successfully logged in!")
 
 @botclient.event
